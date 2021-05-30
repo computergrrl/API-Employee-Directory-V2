@@ -15,7 +15,8 @@ fetch(urlAPI)
    .then(displayEmployees)
    .catch(err => console.log(err))
 
-//FUNCTION TO DYNAMICALLY GENERATE GALLERY
+
+/**************** FUNCTION TO DYNAMICALLY GENERATE GALLERY ********************/
 function displayEmployees(employeeData) {
   employees = employeeData;
   // store the employee HTML as we create it
@@ -38,9 +39,8 @@ function displayEmployees(employeeData) {
   gallery.innerHTML = employeeHTML;
 }
 
+/**************** FUNCTION TO DISPLAY MODAL ********************/
 function displayModal(index) {
-
-  // document.body.style.overflow = 'hidden';
   
   let { name, dob, phone, email, location, picture } = employees[index];
 
@@ -64,6 +64,9 @@ function displayModal(index) {
     modalContainer.classList.remove("hidden");
     modalInfoContainer.innerHTML = modalHTML; 
   }
+
+
+/******** EVENT LISTENER CALLS MODAL FUNCTION **************/
 
   gallery.addEventListener('click', e => {
     // make sure the click is not on the gridContainer itself
@@ -104,8 +107,8 @@ const handleSearch = (e) => {
 
 search.addEventListener("keyup", handleSearch);
 
- /************* Functions for Previous and Next Modal  **************/
 
+/************* FUNCTIONS FOR PREV AND NEXT MODAL  **************/
 
 function prevModal(index) {
   index -=1;
