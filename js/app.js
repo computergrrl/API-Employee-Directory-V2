@@ -47,46 +47,21 @@ function displayModal(index) {
  
 
     const modalHTML = `
-    <img class="modal-img" src="${picture.large}" alt="profile picture">
-    <h3 id="name" class="modal-name cap">${name.first} ${name.last}</h3>
-    <p class="modal-text">${email}</p>
-    <p class="modal-text cap">${location.city}</p>
-    <hr>
-    <p class="modal-text">${phone}</p>
-    <p class="modal-text">${location.street.number} ${location.street.name} ${location.city}, ${location.state} ${location.postcode}</p>
-    <p class="modal-text">Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+        <img class="modal-img" src="${picture.large}" alt="profile picture">
+        <h3 id="name" class="modal-name cap">${name.first} ${name.last}</h3>
+        <p class="modal-text">${email}</p>
+        <p class="modal-text cap">${location.city}</p>
+        <hr>
+        <p class="modal-text">${phone}</p>
+        <p class="modal-text">${location.street.number} ${location.street.name} ${location.city}, ${location.state} ${location.postcode}</p>
+        <p class="modal-text">Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+        <div class="modal-btn-container">
+        <button type="button" id="modal-prev" class="modal-prev btn" onclick="prevModal(${index})">Prev</button>
+        <button type="button" id="modal-next" class="modal-next btn" onclick="nextModal(${index})">Next</button>
+        </div>
     `
     modalContainer.classList.remove("hidden");
-    modalInfoContainer.innerHTML = modalHTML;
-
-    /************* Code for Previous and Next Modal  **************/
-
-    const prev = document.querySelector(".modal-prev");
-    const next = document.querySelector(".modal-next");
-
-
-      next.addEventListener("click" , () => {
-          let prevModal = index +=1;
-          if (index < 12) {
-            displayModal(index ) 
-          } else {
-            index = 0;
-            displayModal(index);
-            
-          }
-      });
-
-     prev.addEventListener("click" , () => {
-      let nextModal = index -= 1;  
-      if (index > -1) {
-          displayModal(index) 
-        } else {
-          index = 11;
-          displayModal(index);
-          
-        }
-      });
-    
+    modalInfoContainer.innerHTML = modalHTML; 
   }
 
   gallery.addEventListener('click', e => {
@@ -127,3 +102,25 @@ const handleSearch = (e) => {
    });
 
  }
+
+ /************* Functions for Previous and Next Modal  **************/
+
+
+function prevModal(index) {
+  index -=1;
+  if (index > -1) {
+    displayModal(index ) 
+  } else {
+    displayModal(11);
+    }
+}
+
+function nextModal(index) {
+     index +=1;
+  if (index < 12) {
+    displayModal(index ) 
+  } else {
+    displayModal(0);
+    }
+
+}
