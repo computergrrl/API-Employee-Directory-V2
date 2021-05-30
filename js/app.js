@@ -6,6 +6,7 @@ const gallery = document.querySelector("#gallery");
 const modal = document.querySelector(".modal");
 const modalClose = document.querySelector("#modal-close-btn");
 const modalInfoContainer = document.querySelector(".modal-info-container");
+const search = document.querySelector('#search-input');
 
 //Call to the API using fetch method
 fetch(urlAPI)
@@ -81,11 +82,9 @@ function displayModal(index) {
 
 /**************** SEARCH FUNCTION ********************/
 
-const search = document.querySelector('#search');
-
 const handleSearch = (e) => {
   
-  const cards = document.querySelectorAll('.card .name');
+  const cards = document.querySelectorAll('.card-name');
   const searchTerm = e.target.value.toLowerCase();
 
   
@@ -102,6 +101,8 @@ const handleSearch = (e) => {
    });
 
  }
+
+search.addEventListener("keyup", handleSearch);
 
  /************* Functions for Previous and Next Modal  **************/
 
