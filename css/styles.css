@@ -146,6 +146,10 @@ header h1 {
     transition: .4s ease-out;
 }
 
+.hidden {
+    display: none;
+}
+
 .modal-close-btn {
     position: absolute;
     top: 15px;
