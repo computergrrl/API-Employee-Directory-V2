@@ -2,7 +2,6 @@ let employees = [];
 const urlAPI = `https://randomuser.me/api/?results=12&nat=US`;
 const modalContainer = document.querySelector(".modal-container");
 const gallery = document.querySelector("#gallery");
-//const modalContainer = document.querySelector(".modal-content");
 const modal = document.querySelector(".modal");
 const modalClose = document.querySelector("#modal-close-btn");
 const modalInfoContainer = document.querySelector(".modal-info-container");
@@ -16,7 +15,7 @@ fetch(urlAPI)
    .catch(err => console.log(err))
 
 
-/**************** FUNCTION TO DYNAMICALLY GENERATE GALLERY ********************/
+/********** FUNCTION TO DYNAMICALLY GENERATE GALLERY **************/
 function displayEmployees(employeeData) {
   employees = employeeData;
   // store the employee HTML as we create it
@@ -45,6 +44,8 @@ function displayModal(index) {
   let { name, dob, phone, email, location, picture } = employees[index];
 
   let date = new Date(dob.date);
+  let month = date.getMonth()+1;
+  month < 10 ? month = '0' + month: month = month;
  
 
     const modalHTML = `
@@ -55,7 +56,7 @@ function displayModal(index) {
         <hr>
         <p class="modal-text">${phone}</p>
         <p class="modal-text">${location.street.number} ${location.street.name} ${location.city}, ${location.state} ${location.postcode}</p>
-        <p class="modal-text">Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+        <p class="modal-text">Birthday: ${month}/${date.getDate()}/${date.getFullYear()}</p>
         <div class="modal-btn-container">
         <button type="button" id="modal-prev" class="modal-prev btn" onclick="prevModal(${index})">Prev</button>
         <button type="button" id="modal-next" class="modal-next btn" onclick="nextModal(${index})">Next</button>
@@ -105,6 +106,7 @@ const handleSearch = (e) => {
 
  }
 
+//EVENT LISTENTER CALLS SEARCH FUNCTION
 search.addEventListener("keyup", handleSearch);
 
 
