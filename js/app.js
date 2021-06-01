@@ -6,6 +6,7 @@ const modal = document.querySelector(".modal");
 const modalClose = document.querySelector("#modal-close-btn");
 const modalInfoContainer = document.querySelector(".modal-info-container");
 const search = document.querySelector('#search-input');
+const searchButton = document.querySelector('#search-submit');
 
 //Call to the API using fetch method
 fetch(urlAPI)
@@ -24,7 +25,7 @@ function displayEmployees(employeeData) {
   employees.forEach((employee, index) => {
 
     employeeHTML += `
-    <div class="card" data-index="${index}">
+    <div class="card shadow" data-index="${index}">
       <div class="card-img-container">
         <img class="card-img" src="${employee.picture.large}" alt="profile picture">
       </div>
@@ -86,11 +87,11 @@ function displayModal(index) {
 
 /**************** SEARCH FUNCTION ********************/
 
-const handleSearch = (e) => {
+const handleSearch = () => {
   
   const cards = document.querySelectorAll('.card-name');
-  const searchTerm = e.target.value.toLowerCase();
-
+  const searchTerm = search.value.toLowerCase();
+  
   
     cards.forEach(card => {
     const text = card.textContent.toLowerCase();
@@ -108,6 +109,7 @@ const handleSearch = (e) => {
 
 //EVENT LISTENTER CALLS SEARCH FUNCTION
 search.addEventListener("keyup", handleSearch);
+searchButton.addEventListener("click" , handleSearch);
 
 
 /************* FUNCTIONS FOR PREV AND NEXT MODAL  **************/

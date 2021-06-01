@@ -16,7 +16,7 @@ html, body {
 body {
     font-family: "Nunito", sans-serif;
     text-align: center;
-    background: rgba(235, 235, 235, 0.9);
+    background: #cce0ff;
 }
 
 header {
@@ -92,6 +92,7 @@ header h1 {
     border: 1px solid rgba(50, 50, 50, 0.3);
     transition: .4s ease-out;
     overflow: hidden;
+    transition: transform 0.3s ease-out;
 }
 
 .card-img {
@@ -243,6 +244,12 @@ header h1 {
     }
 }
 
+.shadow {
+    -webkit-box-shadow: 3px 3px 4px 2px rgba(0, 0, 0, .4);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    3px 3px 4px 2px rgba(0, 0, 0, .4);  /* Firefox 3.5 - 3.6 */
+    box-shadow:         3px 3px 4px 2pxrgba(0, 0, 0, .4);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  }
+
 
 /* ===================================== 
    Desktop
@@ -253,7 +260,8 @@ header h1 {
 
     .card:hover {
         background: rgba(255, 255, 255, 1);
-        border: 1px solid rgba(50, 50, 50, 0.9);
+        /* border: 1px solid rgba(50, 50, 50, 0.9); */
+        transform: translate(-5px, -5px);
     }
 
     .card:hover .card-text {
